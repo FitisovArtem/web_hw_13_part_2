@@ -1,0 +1,25 @@
+{% extends 'quotes/base.html' %}
+
+{% block body %}
+<div class="content mt-3">
+    <h2>Create Quote</h2>
+    {% if form.errors and form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{form.non_field_errors}}
+    </div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label content="form-label">Tag Name
+                {{ form.name }}
+            </label>
+            <span>{{form.errors.name}}</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>
+{% endblock %}
